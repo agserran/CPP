@@ -15,10 +15,10 @@ void files::setArgs(char **argv)
 
 void	files::reader()
 {
-	std::ifstream infile(this->infile);
+	std::ifstream infile(this->infile.c_str());
 	if (infile.is_open())
 	{
-		std::ofstream outfile(this->outfile);
+		std::ofstream outfile(this->outfile.c_str());
 		if (outfile.is_open())
 		{
 			std::string	line;
@@ -42,14 +42,4 @@ void	files::reader()
 	}
 	else
 		std::cerr << "OPENING FILE ERROR" << std::endl;
-}
-int	main(int argc, char **argv)
-{
-	files *file;
-	if (argc != 4)
-	{
-		std::cerr << "JUST 3 ARGUMENTS" << std::endl; 
-	}
-	file->setArgs(argv);
-	file->reader();
 }

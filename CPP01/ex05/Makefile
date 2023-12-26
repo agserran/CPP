@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = files.cpp main.cpp
-EXEC = files
+SRC = Harl.cpp main.cpp
+EXEC = Harl
 
 all: $(EXEC)
 

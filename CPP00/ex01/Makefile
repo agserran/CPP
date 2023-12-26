@@ -1,17 +1,17 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = files.cpp main.cpp
-EXEC = files
+SRC = main.cpp contact.cpp phonebook.cpp
+EXEC = phonebook
 
 all: $(EXEC)
 
 $(EXEC): $(SRC)
-		$(CXX) $(CXXFLAGS) -o $@ $(SRC)
+	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 
 .PHONY: clean fclean
 
 clean:
-		rm -f $(EXEC)
+	rm -f $(EXEC)
 
 re: clean all

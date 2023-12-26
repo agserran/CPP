@@ -28,7 +28,7 @@ void	Contact::setPhoneNumber(std::string phoneNumber)
 
 void	Contact::setDarkestsecret(std::string darkestsecret)
 {
-	this->darkestSecret = darkestSecret;
+	this->darkestSecret = darkestsecret;
 }
 
 std::string		Contact::getName()

@@ -9,7 +9,7 @@ std::string	toMayus(std::string str)
 	return (str);
 }
 
-int main(int argc, char **argv) {
+int main(void) {
     phoneBook agenda;
     std::string tmp;
     

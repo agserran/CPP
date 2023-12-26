@@ -60,8 +60,8 @@ void phoneBook::addContact()
 
 bool phoneBook::contieneSoloNumeros(const std::string str)
 {
-    for (char c : str) {
-        if (!isdigit(c)) {
+    for (int i = 0;str[i]; i++) {
+        if (!isdigit(str[i])) {
             return false;
         }
     }

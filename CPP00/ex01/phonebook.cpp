@@ -8,7 +8,7 @@ void phoneBook::addContact()
 {
     std::string tmp;
     std::cout << "ENTER THE NAME." << std::endl;
-    if (std::cin >> tmp) {
+    if (std::getline(std::cin, tmp)) {
         contactos[index % 8].setName(tmp);
     } else {
         std::cout << "Invalid input or EOF reached." << std::endl;
@@ -16,7 +16,7 @@ void phoneBook::addContact()
     }
 
     std::cout << "ENTER THE LASTNAME." << std::endl;
-    if (std::cin >> tmp) {
+    if (std::getline(std::cin, tmp)) {
         contactos[index % 8].setLastName(tmp);
     } else {
         std::cout << "Invalid input or EOF reached." << std::endl;
@@ -24,7 +24,7 @@ void phoneBook::addContact()
     }
 
     std::cout << "ENTER THE NICKNAME." << std::endl;
-    if (std::cin >> tmp) {
+    if (std::getline(std::cin, tmp)) {
         contactos[index % 8].setNickName(tmp);
     } else {
         std::cout << "Invalid input or EOF reached." << std::endl;
@@ -32,10 +32,10 @@ void phoneBook::addContact()
     }
 
     std::cout << "ENTER THE PHONE NUMBER." << std::endl;
-    if (std::cin >> tmp) {
+    if (std::getline(std::cin, tmp)) {
         while (!contieneSoloNumeros(tmp)) {
             std::cout << "Invalid phone number. Please enter a valid number." << std::endl;
-            if (!(std::cin >> tmp)) {
+            if (!(std::getline(std::cin, tmp))) {
                 std::cout << "Invalid input or EOF reached." << std::endl;
                 return;
             }
@@ -48,6 +48,8 @@ void phoneBook::addContact()
 
     std::cout << "ENTER THE DARKEST SECRET." << std::endl;
     if (std::cin >> tmp) {
+        std::cin.clear();
+        std::cin.ignore(10000,'\n');
         contactos[index % 8].setDarkestsecret(tmp);
     } else {
         std::cout << "Invalid input or EOF reached." << std::endl;
@@ -129,6 +131,13 @@ void	phoneBook::searchContact()
 	printContacts();
 	std::cout << std::endl << "ENTER AN INDEX" << std::endl;
     if (std::cin >> i) {
+        std::cin.clear();
+        std::cin.ignore(10000,'\n');
+        if (!contieneSoloNumeros(i))
+        {
+            std::cout << std::endl << "INVALID INDEX" << std::endl;
+            return ;
+        }
         int num = std::stoi(i);
         printContact(num);
     } else {

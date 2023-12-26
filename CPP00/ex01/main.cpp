@@ -18,14 +18,15 @@ int main(void) {
         if (!(std::cin >> tmp)) {
             if (std::cin.eof()) {
                 std::cout << "EOF reached. Exiting..." << std::endl;
-                break; // Sal del bucle si se alcanza el EOF
+                break; 
             }
             else {
                 std::cerr << "Error de entrada." << std::endl;
-                break; // En caso de error, también sal del bucle
+                break; 
             }
         }
-
+        std::cin.clear();
+        std::cin.ignore(10000,'\n');
         tmp = toMayus(tmp);
 
         if (tmp == "ADD") {
@@ -36,7 +37,7 @@ int main(void) {
         }
         else if (tmp == "EXIT") {
             std::cout << "Exiting..." << std::endl;
-            break; // Sal del bucle si el usuario elige "EXIT"
+            break; 
         }
         else {
             std::cout << "NON VALID OPTION" << std::endl;

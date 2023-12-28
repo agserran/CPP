@@ -87,7 +87,7 @@ void	phoneBook::printContact(int i)
 
 void	printHeader()
 {
-	std::cout << "**INDEX**|FIRSTNAME|*LAST NAME|*NICKNAME|" << std::endl;
+	std::cout << "**INDEX** |FIRSTNAME|*LAST NAME|*NICKNAME |" << std::endl;
 }
 
 
@@ -105,11 +105,14 @@ void	printer(std::string str)
 	int len;
 
 	len = str.length();
-	if (len > 10)
-		std::cout << str.substr(0, 9);
-	if (len < 10)
+	if (len > 10){
+		std::cout << str.substr(0, 8);
+        std::cout << ".";
+}
+	if (len < 10){
 		printSpaces(10 - len);
-	std::cout << str;
+	    std::cout << str;
+}
 }
 
 void	phoneBook::printContacts()
@@ -117,9 +120,13 @@ void	phoneBook::printContacts()
 	for (int i = 0; i < this->index && i < 8; i++)
 	{
 		printer(std::to_string(i));
+        std::cout << "|";
 		printer(contactos[i].getName());
+        std::cout << "|";
 		printer(contactos[i].getLastName());
+        std::cout << "|";
 		printer(contactos[i].getNickName());
+        std::cout << "|";
 		std::cout << std::endl;
 	}
 }
@@ -139,7 +146,10 @@ void	phoneBook::searchContact()
             return ;
         }
         int num = std::stoi(i);
-        printContact(num);
+        if (num < this->index)
+            printContact(num);
+        else
+            std::cout << "INVALID INDEX" << std::endl;
     } else {
         std::cout << "Invalid input or EOF reached." << std::endl;
     }

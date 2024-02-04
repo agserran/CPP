@@ -1,8 +1,8 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC =   animal.cpp      cat.cpp         dog.cpp         main.cpp   Brain.cpp
-EXEC =  Brain
+SRC =   animal.cpp      cat.cpp         dog.cpp         main.cpp      
+EXEC =  Animal
 
 all: $(EXEC)
 

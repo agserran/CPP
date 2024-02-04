@@ -6,8 +6,8 @@
 class Dog : public Animal
 {
 public:
-	Dog(/* args */);
-	~Dog();
+	Dog();
+	virtual ~Dog();
 	Dog(const Dog& copy);
 	Dog& operator=(const Dog& copy);
 

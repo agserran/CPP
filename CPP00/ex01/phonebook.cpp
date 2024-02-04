@@ -87,7 +87,7 @@ void	phoneBook::printContact(int i)
 
 void	printHeader()
 {
-	std::cout << "**INDEX** |FIRSTNAME|*LAST NAME|*NICKNAME |" << std::endl;
+	std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
 }
 
 
@@ -106,7 +106,7 @@ void	printer(std::string str)
 
 	len = str.length();
 	if (len > 10){
-		std::cout << str.substr(0, 8);
+		std::cout << str.substr(0, 9);
         std::cout << ".";
 }
 	if (len < 10){
@@ -119,6 +119,7 @@ void	phoneBook::printContacts()
 {
 	for (int i = 0; i < this->index && i < 8; i++)
 	{
+        std::cout << "|";
 		printer(std::to_string(i));
         std::cout << "|";
 		printer(contactos[i].getName());

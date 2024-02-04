@@ -1,17 +1,15 @@
 CXX = g++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
-SRC = main.cpp Zombie.cpp zombieHorde.cpp
-EXEC = zombieHorde
+SRC =   main.cpp Fixed.cpp
+EXEC =  fixed
 
 all: $(EXEC)
 
 $(EXEC): $(SRC)
-	$(CXX) $(CXXFLAGS) -o $@ $(SRC)
-
+		$(CXX) $(CXXFLAGS) -o $@ $(SRC)
 .PHONY: clean fclean
 
 clean:
-	rm -f $(EXEC)
-
+		rm -f $(EXEC)
 re: clean all

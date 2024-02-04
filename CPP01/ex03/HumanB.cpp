@@ -1,7 +1,9 @@
 #include "HumanB.hpp"
 
 HumanB::HumanB(std::string name){
-	std::cout << name << "spawned" << std::endl;
+	this->name = name;
+	std::cout << name << " spawned" << std::endl;
+	this->weapon = nullptr;
 }
 
 HumanB::~HumanB()
@@ -16,11 +18,8 @@ void	HumanB::setWeapon(Weapon& Weapon)
 
 void HumanB::attack()
 {
-	std::string	type;
-
-	type = this->weapon->getType();
-	if (type.length() == 0)
-		std::cout << this->name << "kicked you" << std::endl;
+	if (weapon == nullptr)
+		std::cout << this->name << " kicked you" << std::endl;
 	else
-		std::cout << this->name << "attacked with " << this->weapon->getType() << std::endl; 
+		std::cout << this->name << " attacked with " << this->weapon->getType() << std::endl; 
 }

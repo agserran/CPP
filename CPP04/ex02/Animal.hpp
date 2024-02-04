@@ -2,7 +2,6 @@
 # define ANIMAL_HPP
 
 #include <iostream>
-#include "Brain.hpp"
 
 class Animal
 {
@@ -13,7 +12,7 @@ public:
 	virtual ~Animal();
 	Animal(const Animal& copy);
 	Animal& operator=(const Animal& copy);
-	virtual void	makeSound() const;
+	virtual void	makeSound() const = 0;
 	const std::string getType() const;
 };
 

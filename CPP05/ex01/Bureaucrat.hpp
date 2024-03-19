@@ -14,8 +14,8 @@ class Bureaucrat
 		~Bureaucrat();
 		Bureaucrat(const Bureaucrat& copy);
 		Bureaucrat& operator=(const Bureaucrat& copy);
-		std::string				getName();
-		int						getGrade();
+		std::string				getName() const;
+		int						getGrade() const;
 		void					setGrade(int grade);
 		void					signForm(const Form& Form);	
 		

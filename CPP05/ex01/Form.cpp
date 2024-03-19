@@ -30,5 +30,28 @@ bool	Form::isSigned()
 
 const int	Form::gradeNeedeedToSign()
 {
-	if ()
+	return (this->gradeToSign);
+}
+
+const int	Form::gradeNeedeedToExecute()
+{
+	return (this->gradeToExecute);
+}
+
+void	Form::beSigned(const Bureaucrat& bureaucrat)
+{
+	if (bureaucrat.getGrade() > this->gradeNeedeedToSign())
+		{
+			std::cout << bureaucrat.getName() << " cannot sign " << this->getName() << "because he has too low grade" << std::endl;
+			throw GradeTooLowException();
+		}
+	else
+	{
+		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
+		this->Signed = true;
+}
+
+std::ostream& operator<<(std::ostream &out, Bureaucrat &f)
+{
+	out << f->Name
 }

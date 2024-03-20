@@ -4,6 +4,8 @@
 #include <iostream>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class  Form
 {
     private:
@@ -12,7 +14,7 @@ class  Form
         const int           gradeToSign;
         const int           gradeToExecute;
     public:
-		Form(const std::string name, bool Signed, const int gradeSign, const int gradexecute);
+		Form(const std::string name, const int gradeSign, const int gradexecute);
 		~Form();
 		Form(const Form& copy);
 		Form& operator=(const Form& copy);
@@ -21,7 +23,7 @@ class  Form
 			public:
 				const char *what() const throw ()
 				{
-					return ("Grade Too Low Exception.");
+					return ("Grade Too Low Exception. No valid grade ");
 				}
 		};
 
@@ -30,14 +32,16 @@ class  Form
 			public:
 				const char *what() const throw ()
 				{
-					return ("Grade Too High Exception.");
+					return ("Grade Too High Exception. No valid grade ");
 				}
 		};
-        const std::string			getName();
+        const std::string			getName() const;
         bool						isSigned();
-		const int					gradeNeedeedToSign();
-		const int					gradeNeedeedToExecute();
-		void						beSigned(const Bureaucrat& Bureaucrat);
+		int							gradeNeedeedToSign() const;
+		int							gradeNeedeedToExecute() const;
+		static void					beSigned(const Bureaucrat& Bureaucrat, Form& form);
+		void						signer();
+		void						checkRange();
 };
 
 std::ostream& operator<<(std::ostream &out, Form &f);

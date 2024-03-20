@@ -46,3 +46,8 @@ std::ostream& operator<<(std::ostream &out, Bureaucrat &f)
 	out << f.getName() << ", bureaucrat grade " << f.getGrade();
 	return (out);
 }
+
+void		Bureaucrat::signForm(Form& Form)
+{
+	Form::beSigned(*this, Form);
+}

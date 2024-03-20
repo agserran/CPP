@@ -1,15 +1,15 @@
 #include "Form.hpp"
 
-Form::Form(const std::string name, bool Signed, const int gradeSign, const int gradeExecute) : Name(name), Signed(Signed), gradeToSign(gradeSign), gradeToExecute(gradeExecute) 
-{}
+Form::Form(const std::string name, const int gradeSign, const int gradeExecute) : Name(name), Signed(false), gradeToSign(gradeSign), gradeToExecute(gradeExecute) 
+{
+	this->checkRange();
+}
 
 Form::~Form()
 {}
 
-Form::Form(const Form& copy)
-{
-	*this = copy;
-}
+Form::Form(const Form& copy) : Name(copy.getName()), Signed(false), gradeToSign(copy.gradeNeedeedToSign()), gradeToExecute(copy.gradeNeedeedToExecute()) 
+{}
 
 Form& Form::operator=(const Form& copy)
 {
@@ -18,7 +18,7 @@ Form& Form::operator=(const Form& copy)
 	return (*this);
 }
 
-const std::string Form::getName()
+const std::string Form::getName() const
 {
 	return(this->Name);
 }
@@ -28,30 +28,45 @@ bool	Form::isSigned()
 	return (this->Signed);
 }
 
-const int	Form::gradeNeedeedToSign()
+int	Form::gradeNeedeedToSign() const
 {
 	return (this->gradeToSign);
 }
 
-const int	Form::gradeNeedeedToExecute()
+int	Form::gradeNeedeedToExecute() const
 {
 	return (this->gradeToExecute);
 }
 
-void	Form::beSigned(const Bureaucrat& bureaucrat)
-{
-	if (bureaucrat.getGrade() > this->gradeNeedeedToSign())
+void	Form::beSigned(const Bureaucrat& bureaucrat, Form& form)
+{ 
+	if (bureaucrat.getGrade() > form.gradeNeedeedToSign())
 		{
-			std::cout << bureaucrat.getName() << " cannot sign " << this->getName() << "because he has too low grade" << std::endl;
+			std::cout << bureaucrat.getName() << " cannot sign " << form.getName() << "because he has too low grade" << std::endl;
 			throw GradeTooLowException();
 		}
 	else
 	{
-		std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
-		this->Signed = true;
+		std::cout << bureaucrat.getName() << " signed " << form.getName() << std::endl;
+		form.signer();
+	}
 }
 
-std::ostream& operator<<(std::ostream &out, Bureaucrat &f)
+void Form::signer()
 {
-	out << f->Name
+	this->Signed = true;
+}
+
+std::ostream& operator<<(std::ostream &out, Form &f)
+{
+	out << f.getName() << " " << f.gradeNeedeedToSign() << " " << f.gradeNeedeedToSign();
+	return out;
+}
+
+void	Form::checkRange()
+{
+	if (this->gradeNeedeedToExecute() > 150 || this->gradeNeedeedToSign() > 150)
+		throw GradeTooLowException();
+	else if (this->gradeNeedeedToExecute() < 1 || this->gradeNeedeedToSign() < 1)
+		throw GradeTooHighException();
 }

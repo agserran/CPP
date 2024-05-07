@@ -3,13 +3,8 @@
 #include "Cat.hpp"
 #include "WrongCat.hpp"
 
-void leaks(void)
-{
-	system("leaks -q polymorphism");
-}
 int	main(void)
 {
-	//atexit(leaks);
 	std::cout << "__MAIN_OBJECTS__" << std::endl;
 	const Animal* meta = new Animal();
 	const Animal* j = new Dog();

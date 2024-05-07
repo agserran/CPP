@@ -12,6 +12,10 @@ public:
 	~Cat();
 	Cat(const Cat& copy);
 	Cat& operator=(const Cat& copy);
+	virtual void makeSound() const;
+	void setBrainNumIdeas();
+	void setBrainStringIdeas();
+	void printBrainIdeas();
 };
 
 #endif

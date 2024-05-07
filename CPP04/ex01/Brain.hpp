@@ -2,6 +2,7 @@
 # define BRAIN_HPP
 
 #include <iostream>
+#include <sstream>
 
 class Brain
 {
@@ -12,6 +13,9 @@ public:
     ~Brain();
     Brain(const Brain& copy);
     Brain& operator=(const Brain& copy);
+	void setNumIdeas();
+	void setStringIdeas();
+	void printIdeas();
 };
 
 #endif

@@ -2,19 +2,18 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-#define ZOO_SIZE 10
-
-void leaks(void)
-{
-	system("leaks -q polymorphism");
-}
-
 int main()
 {
-//atexit(leaks);
 const Animal* j = new Dog();
-const Animal* i = new Cat();
-delete j;//should not create a leak
+Cat* i = new Cat();
+Cat* k = new Cat();
+k->setBrainStringIdeas();
+i->setBrainNumIdeas();
+i->printBrainIdeas();
+i = k;
+std::cout << "i = k" << std::endl;
+i->printBrainIdeas();
+delete j;
 delete i;
 return 0;
 }

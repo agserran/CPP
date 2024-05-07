@@ -5,7 +5,7 @@ Cat::Cat(){
 	this->type = "Cat";
 }
 
-Cat::Cat(const Cat& copy)
+Cat::Cat(const Cat& copy) : Animal()
 {
 	std::cout << "Cat  copy constructor" << std::endl;
 	*this = copy;
@@ -25,7 +25,7 @@ Cat& Cat::operator=(const Cat& copy)
 	return (*this);
 }
 
-void	makeSound()
+void	Cat::makeSound() const
 {
 	std::cout << "miau" << std::endl;
 }

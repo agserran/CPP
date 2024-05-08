@@ -1,5 +1,10 @@
 #include "Form.hpp"
 
+Form::Form() : Name("default"), Signed(false), gradeToSign(150), gradeToExecute(150)
+{
+	this->checkRange();
+}
+
 Form::Form(const std::string name, const int gradeSign, const int gradeExecute) : Name(name), Signed(false), gradeToSign(gradeSign), gradeToExecute(gradeExecute) 
 {
 	this->checkRange();

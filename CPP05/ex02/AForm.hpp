@@ -14,6 +14,7 @@ class  AForm
         const int           gradeToSign;
         const int           gradeToExecute;
     public:
+		AForm();
 		AForm(const std::string name, const int gradeSign, const int gradexecute);
 		virtual ~AForm();
 		AForm(const AForm& copy);

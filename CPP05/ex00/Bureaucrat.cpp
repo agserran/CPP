@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat() : name("default")
+{
+	Bureaucrat::setGrade(150);
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : name(name)
 {
 	Bureaucrat::setGrade(grade);
